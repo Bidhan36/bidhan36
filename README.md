@@ -14,7 +14,7 @@
 
 - 📝 I regularly write articles on [https://github.com/Bidhan36](https://github.com/Bidhan36)
 
-- 💬 Ask me about Dart, Python
+- 💬 Ask me about **Dart, Python
 
 - 📫 How to reach me **bidhanbastola37@gmail.com**
 
