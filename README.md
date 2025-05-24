@@ -10,13 +10,11 @@
 ### 🚀 About Me
 
 - 🔭 I’m currently working on [**fnfcloudkitchen**](https://github.com/Bidhan36/fnfcloudkitchen)
-- 🌱 I’m currently learning **Deep Learning**  
-- 👯 I’m open to collaboration on [**Krishikranti Mobile App**](https://github.com/Bidhan36/Krishikranti_Project)  
+- 🌱 I’m currently learning **Python**  
 - 👨‍💻 All of my work is available on [GitHub](https://github.com/Bidhan36)  
 - 📝 I regularly write articles and maintain my repos on [GitHub](https://github.com/Bidhan36)  
-- 💬 Ask me about **Dart, Python**  
 - 📫 Reach me at **bidhanbastola37@gmail.com**  
-- ⚡ Fun fact: 🎥 When I'm not crafting code, I'm behind the camera as a filmmaker and the creative mind behind **Pulse Studios**, bringing cinematic magic to life in Nepal!
+- ⚡ Fun fact: 🎥 When I'm not crafting code, I'm behind the camera as a filmmaker and the one of creative mind behind **Pulse Studios**, bringing cinematic magic to life in Nepal!
 
 ---
 
