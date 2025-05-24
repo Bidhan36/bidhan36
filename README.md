@@ -9,7 +9,7 @@
 
 ### 🚀 About Me
 
-- 🔭 I’m currently working on [**Krishikranti Mobile App**](https://github.com/Bidhan36/Krishikranti_Project)  
+- 🔭 I’m currently working on [**fnfcloudkitchen**](https://github.com/Bidhan36/fnfcloudkitchen)
 - 🌱 I’m currently learning **Deep Learning**  
 - 👯 I’m open to collaboration on [**Krishikranti Mobile App**](https://github.com/Bidhan36/Krishikranti_Project)  
 - 👨‍💻 All of my work is available on [GitHub](https://github.com/Bidhan36)  
