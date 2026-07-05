@@ -1,6 +1,14 @@
 <h1 align="center">Hi 👋, I'm Bidhan</h1>
 <h3 align="center">🎯 A passionate frontend developer & creative filmmaker from Nepal</h3>
 
+---
+
+### 🎮 Daphe Sky
+
+A high-fidelity Flappy-style mobile game starring **Daphe** (the Himalayan Monal, Nepal's national bird) soaring over the Himalayas and the rooftops of Kathmandu. Built as a touch-first HTML5/Canvas game that runs full-screen in iPad, iOS and Android browsers, installs as a home-screen app (PWA), and wraps into native iOS/Android builds via Capacitor.
+
+👉 See [`game/README.md`](./game/README.md) for how to play, run it locally, and build the native apps.
+
 <p align="center">
   <img src="https://komarev.com/ghpvc/?username=bidhan36&label=Profile%20views&color=0e75b6&style=flat" alt="bidhan36" />
 </p>

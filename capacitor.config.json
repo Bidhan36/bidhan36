@@ -1,0 +1,13 @@
+{
+  "appId": "com.bidhan36.daphesky",
+  "appName": "Daphe Sky",
+  "webDir": "game",
+  "backgroundColor": "#0c1830",
+  "ios": {
+    "contentInset": "always",
+    "backgroundColor": "#0c1830"
+  },
+  "android": {
+    "backgroundColor": "#0c1830"
+  }
+}

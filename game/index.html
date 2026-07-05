@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#ff7a3c" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="description" content="Daphe Sky — fly the Himalayan Monal, Nepal's national bird, over the peaks of the Himalayas and the rooftops of Kathmandu." />
+<title>Daphe Sky — A Nepali Flappy Adventure</title>
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="icons/icon-180.png" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="stage">
+  <canvas id="game" aria-label="Daphe Sky game canvas"></canvas>
+
+  <div id="hud">
+    <div id="score">0</div>
+  </div>
+
+  <div id="startScreen" class="overlay">
+    <div class="panel">
+      <h1>दाफे<span class="sub">Daphe Sky</span></h1>
+      <p class="tagline">Soar with Nepal's national bird over the Himalayas &amp; Kathmandu</p>
+      <button id="startBtn" class="btn">Tap to Fly</button>
+      <div class="hint">Tap / Click / Space / ↑ to flap</div>
+      <div class="bestRow">Best: <span id="bestStart">0</span></div>
+    </div>
+  </div>
+
+  <div id="gameOverScreen" class="overlay hidden">
+    <div class="panel">
+      <h2>Grounded!</h2>
+      <div class="scoreRow">
+        <div><span class="label">Score</span><span id="finalScore">0</span></div>
+        <div><span class="label">Best</span><span id="bestScore">0</span></div>
+      </div>
+      <button id="retryBtn" class="btn">Fly Again</button>
+    </div>
+  </div>
+
+  <button id="muteBtn" aria-label="Toggle sound">🔊</button>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
