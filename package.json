@@ -1,0 +1,22 @@
+{
+  "name": "daphe-sky",
+  "version": "1.0.0",
+  "description": "Daphe Sky — a Flappy-style game starring Nepal's national bird over the Himalayas and Kathmandu.",
+  "private": true,
+  "scripts": {
+    "start": "npx http-server game -p 8080 -c-1",
+    "cap:add:ios": "npx cap add ios",
+    "cap:add:android": "npx cap add android",
+    "cap:sync": "npx cap sync",
+    "cap:open:ios": "npx cap open ios",
+    "cap:open:android": "npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/ios": "^6.1.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.2"
+  }
+}
