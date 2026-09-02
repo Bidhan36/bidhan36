@@ -121,7 +121,7 @@ let groundH = 120;
 const State = { START: 0, PLAYING: 1, OVER: 2 };
 let state = State.START;
 
-const bird = { x: 0, y: 0, vy: 0, rot: 0, wing: 0, wingDir: 1 };
+const bird = { x: 0, y: 0, vy: 0, rot: 0, wing: 0 };
 
 let pipes = [];
 let particles = [];
@@ -599,7 +599,6 @@ function flap() {
   }
   if (state === State.OVER) return;
   bird.vy = FLAP_VELOCITY;
-  bird.wingDir = -1;
   sfx.flap();
   spawnFeather(bird.x - 14, bird.y + 6);
 }
@@ -672,14 +671,12 @@ function update(dt) {
       bird.x + BIRD_RADIUS * 0.55 > p.x &&
       bird.x - BIRD_RADIUS * 0.55 < p.x + PIPE_WIDTH
     ) {
-      const inGap = bird.y - BIRD_RADIUS * 0.6 > p.gapY && bird.y + BIRD_RADIUS * 0.6 < p.gapY + p.gap;
-      if (!inGap) {
-        if (
-          rectCircleCollide(bird.x, bird.y, BIRD_RADIUS * 0.62, p.x, 0, PIPE_WIDTH, p.gapY) ||
-          rectCircleCollide(bird.x, bird.y, BIRD_RADIUS * 0.62, p.x, p.gapY + p.gap, PIPE_WIDTH, H)
-        ) {
-          endGame();
-        }
+      const hitR = BIRD_RADIUS * 0.62;
+      if (
+        rectCircleCollide(bird.x, bird.y, hitR, p.x, 0, PIPE_WIDTH, p.gapY) ||
+        rectCircleCollide(bird.x, bird.y, hitR, p.x, p.gapY + p.gap, PIPE_WIDTH, H)
+      ) {
+        endGame();
       }
     }
   }
@@ -696,31 +693,28 @@ function update(dt) {
   updateParticles(dt);
 }
 
-function render() {
+function render(dt) {
   drawSky();
 
-  const t = elapsed;
-  const farScroll = t * 12;
-  const nearScroll = t * 28;
-  const buildingScroll = state === State.PLAYING || state === State.OVER ? getWorldScroll() * 0.5 : t * 20;
-  const groundScroll = state === State.PLAYING || state === State.OVER ? getWorldScroll() : t * 60;
+  const running = state === State.PLAYING || state === State.OVER;
+  const buildingScroll = running ? worldScroll * 0.5 : elapsed * 20;
+  const groundScroll = running ? worldScroll : elapsed * 60;
 
-  drawPeakRow(peaksFar, farScroll, H - groundH - H * 0.02, "#c98bd6", "#7a5bc9", true);
-  drawPeakRow(peaksNear, nearScroll, H - groundH + 6, "#b06fb0", "#5b3f8f", false);
-  drawClouds(state === State.PLAYING ? 1 / 60 : 1 / 60);
+  drawPeakRow(peaksFar, elapsed * 12, H - groundH - H * 0.02, "#c98bd6", "#7a5bc9", true);
+  drawPeakRow(peaksNear, elapsed * 28, H - groundH + 6, "#b06fb0", "#5b3f8f", false);
+  drawClouds(dt);
   drawSkyline(buildingScroll, H - groundH + 4);
-  drawPrayerFlags(t);
-  if (state === State.PLAYING || state === State.OVER) drawPipes(t);
+  drawPrayerFlags(elapsed);
+  if (running) drawPipes(elapsed);
   drawGround(groundScroll);
   drawParticles();
 
-  const wingPhase = state === State.PLAYING ? bird.wing : Math.sin(t * 3) * 1;
-  const bobY = state === State.START ? Math.sin(t * 2.4) * 8 : 0;
+  const wingPhase = state === State.PLAYING ? bird.wing : Math.sin(elapsed * 3) * 1;
+  const bobY = state === State.START ? Math.sin(elapsed * 2.4) * 8 : 0;
   drawDaphe(bird.x, bird.y + bobY, bird.rot, wingPhase);
 }
 
 let worldScroll = 0;
-function getWorldScroll() { return worldScroll; }
 
 let lastTime = performance.now();
 function loop(now) {
@@ -731,7 +725,7 @@ function loop(now) {
   if (state === State.PLAYING) worldScroll += currentSpeed() * dt;
 
   update(dt);
-  render();
+  render(dt);
   requestAnimationFrame(loop);
 }
 
@@ -755,26 +749,6 @@ retryBtn.addEventListener("pointerdown", (e) => {
   ensureAudio();
   startGame();
 });
-
-document.addEventListener("visibilitychange", () => {
-  if (document.hidden && state === State.PLAYING) {
-    // freeze via large dt clamp; nothing else needed since dt is clamped on resume
-  }
-});
-
-/* ------------------------------- QA hook ----------------------------------
-   Read-only debug snapshot, only attached when ?debug is present in the URL.
-   Used by automated smoke tests; never referenced by game logic itself. */
-if (location.search.includes("debug")) {
-  window.__daphe = {
-    getBird: () => ({ x: bird.x, y: bird.y, vy: bird.vy }),
-    getState: () => state,
-    getScore: () => score,
-    getPipes: () => pipes.map(p => ({ x: p.x, gapY: p.gapY, gap: p.gap })),
-    getWorldHeight: () => H,
-    getGroundH: () => groundH,
-  };
-}
 
 /* -------------------------------- Boot ------------------------------------ */
 
