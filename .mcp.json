@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "ponytail": {
+      "command": "node",
+      "args": ["${PONYTAIL_HOME}/ponytail-mcp/index.js"],
+      "env": {
+        "PONYTAIL_DEFAULT_MODE": "full"
+      }
+    }
+  }
+}
